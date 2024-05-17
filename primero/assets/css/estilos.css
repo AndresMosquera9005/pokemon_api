@@ -1,0 +1,17 @@
+#margen_button{
+    margin-left: 45%;
+}
+
+.card {
+    background-color: transparent;
+}
+
+#img_fondo{
+    background-image: url("../img/pokemonfront.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    /* opacity: 0.8; */
+    min-height: 100vh;
+}
