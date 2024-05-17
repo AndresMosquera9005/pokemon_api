@@ -1,4 +1,6 @@
 var divPokemones = document.getElementById("pokemones");
+let btn_anterior = document.getElementById("previous")
+let btn_siguiente = document.getElementById("next")
 
 async function fetchByUrl(url) {
     let dataAPI = await fetch(url);
@@ -29,9 +31,12 @@ async function fetchAndDisplayPokemons(url) {
     </div>
     `
     });
-
+    
     const pokemonHTML = await Promise.all(pokemonPromises);
     divPokemones.innerHTML = pokemonHTML.join(''); 
+
+
 }
 
 fetchAndDisplayPokemons("https://pokeapi.co/api/v2/pokemon");
+

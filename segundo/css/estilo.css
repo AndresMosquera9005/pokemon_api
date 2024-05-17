@@ -1,5 +1,5 @@
 body{
-    background-image: url("../img/pokemon\ 5.jpg");
+    background-image: url("../img/pokemon\ 5\ recortado.png");
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -12,6 +12,19 @@ body{
     background-color: transparent;
 }
 
+#pokemones{
+    margin-left: 150px;
+}
+
 .text-color{
     color: #000;
+}
+
+
+#margin-button{
+    margin-left: 170px;
+}
+
+#button_next {
+    margin-left: 1393px;
 }
