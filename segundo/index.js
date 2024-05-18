@@ -1,6 +1,9 @@
 var divPokemones = document.getElementById("pokemones");
 let btn_anterior = document.getElementById("button_anterior")
 let btn_siguiente = document.getElementById("button_siguiente")
+var url_pokemonApi = "https://pokeapi.co/api/v2/pokemon";
+var pokemonNext = "";
+var pokemonPrevious = "";
 
 async function fetchByUrl(url) {
     let dataAPI = await fetch(url);
@@ -10,6 +13,8 @@ async function fetchByUrl(url) {
 
 async function listaPokemones(url) {
     const pokemonData = await fetchByUrl(url);
+    pokemonNext = pokemonData.next
+    pokemonPrevious = pokemonData.previous
     pokemonPromises = pokemonData.results.map(async pokemon => {
     const infoByPokemon = await fetchByUrl(pokemon.url);
     const pokemonImage = infoByPokemon.sprites.front_default;
@@ -28,12 +33,12 @@ async function listaPokemones(url) {
             <strong class="text-color">Indice: ${indiceGame}</strong>
         </div>
     </div>
-    `    
+    `
+    btn_siguiente
 });
 
 const pokemonHTML = await Promise.all(pokemonPromises);
 divPokemones.innerHTML = pokemonHTML.join('');
-
 
 }
 
@@ -42,19 +47,9 @@ listaPokemones("https://pokeapi.co/api/v2/pokemon");
 
 
 btn_siguiente.addEventListener("click", function(){
-    let lista_nombre_pokemones = document.getElementById("lista_pokemon");
-    lista_nombre_pokemones.innerHTML = "";
-    let dataAPI = fetch(url_pokemonApi) 
+    listaPokemones(pokemonNext);
+})
 
-    dataAPI.then(respuesta => respuesta.json())
-        .then(informacion_json =>{
-            url_pokemonApi = informacion_json.next
-            informacion_json.results.forEach(pokemon => {
-                var url_img = pokemon.url
-                let info_pokemon = fetch(url_img)
-                info_pokemon.then(respuestaImg => respuestaImg.json())
-                    fetchAndDisplayPokemons()
-            })
-        }
-    )
+btn_anterior.addEventListener("click", function(){
+    listaPokemones(pokemonPrevious);
 })
