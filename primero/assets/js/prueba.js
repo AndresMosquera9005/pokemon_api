@@ -51,14 +51,15 @@ btn_anterior.addEventListener("click", function(){
                 lista_nombre_pokemones.innerHTML += `
                 <div class="col">
                     <div class="card">
-                        <img src="" alt="">
+                        <img src="${imagenes.sprites.front_default}" alt="">
                         <div class="cad-body">
-                            <h5 class="card-title">${pokemon.name}</h5>
-                            <ul>
-                                <li class="d-flex justify-content-around align-items-center">
-                                    <div id="lista_pokemon"></div>
-                                </li>
-                            </ul>
+                            <h5 class="card-title">Nombre: ${pokemon.name}</h5>
+                            <spam>Move: ${imagenes.moves[1].move.name}</spam>
+                                <ul>
+                                    <li class="d-flex justify-content-around align-items-center">
+                                        <div id="lista_pokemon"></div>
+                                    </li>
+                                </ul>
                         </div>
                     </div>
                 </div>
